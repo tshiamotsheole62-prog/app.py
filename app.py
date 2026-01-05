@@ -1,12 +1,18 @@
 import streamlit as st
+import random
+import time
 
-st.title("✈️ Flight Time Predictor")
+st.set_page_config(page_title="Flight Predictor", page_icon="✈️")
 
-st.write("This app estimates how long a plane will fly.")
+st.title("✈️ Flight Duration Predictor (Demo)")
+st.write("This app simulates flight duration outcomes.")
 
-distance = st.number_input("Enter distance (km)", min_value=1.0)
-speed = st.number_input("Enter speed (km/h)", min_value=1.0)
+st.warning("⚠️ This is a simulation for educational purposes only.")
 
-if st.button("Predict Flight Time"):
-    time_hours = distance / speed
-    st.success(f"Estimated flight time: {time_hours:.2f} hours")
+if st.button("Start Flight"):
+    with st.spinner("Plane is flying..."):
+        time.sleep(2)
+
+    duration = round(random.uniform(1.0, 10.0), 2)
+
+    st.success(f"✈️ Flight lasted **{duration} seconds**")
